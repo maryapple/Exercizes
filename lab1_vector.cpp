@@ -27,16 +27,18 @@ int main()
     }
     cout << "\namountMult3: " << amountMult3 << endl;
     
-    // Запоминаем последний элемент
+    // Запоминаем последний элемент. 
+    // Почему-то берется только целая часть
     int temp = v.back();  
     // cout << temp;
     
-    for (auto i = v.end(); i > v.begin(); i++) {
+    for (auto i = v.end() - 1; i > v.begin(); i--) {
+        // cout << *(i) << " " << *(i - 1) << endl;
         *i = *(i - 1);
     }
     
     // Записываем в 0 элемент temp
-    // v.at(0) = temp;
+    v.at(0) = temp;
     
     for (auto i = v.begin(); i != v.end(); i++) {
         cout << *i << " ";
