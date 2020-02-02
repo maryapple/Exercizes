@@ -2,11 +2,7 @@
 #include <vector>
 #include <cstdlib>
 #include <math.h>
-<<<<<<< HEAD
-#include <time.h>
-=======
 #include <algorithm>
->>>>>>> a6bff102b78a5253594bb12dc900a7f128b3a5d7
 
 using namespace std;
 
@@ -28,7 +24,7 @@ int main()
 
     auto first_even = find_if(v.begin(), v.end(), [](int i){ return i % 2 == 0; });
     auto le = find_if(v.rbegin(), v.rend(), [](int i){ return i % 2 == 0; });
-    vector<int>::iterator last_even = le;
+    vector<int>::iterator last_even = --(le.base());
     cout << "first even: " << *first_even << " last: " << *last_even << endl;
     
     for (auto i = v.begin(); i != v.end(); i++) {
@@ -76,13 +72,21 @@ int main()
         cout << *i << " ";
     }
     cout << endl;
+    
+    cout << "*2" << endl;
 
     // Умножим на 2 
-    for (auto i = last_even; i != v.end(); i++ )
+    for (auto i = last_even,  j = v.begin(); i != v.end(), j!=first_even; i++, j++ )
 	{ 
 		*i *= 2;
+		*j *= 2;
 		cout << *i << " " ;
 	}
+	    cout << endl;
+	for (auto i = v.begin(); i != v.end(); i++) {
+        cout << *i << " ";
+    }
+    cout << endl;
     
     return 0;
 }
